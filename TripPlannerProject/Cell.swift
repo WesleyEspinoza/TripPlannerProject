@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class Cell: UICollectionViewCell {
-    let colorArr:[String] = ["#35CDD8","#A5B557","#354E71"]
     
     static var identifier: String = "Cell"
     
@@ -21,6 +20,11 @@ class Cell: UICollectionViewCell {
         
         
         // Layout views inside the cell
+        let tripToLabel = UILabel(frame: .zero)
+        tripToLabel.translatesAutoresizingMaskIntoConstraints = false
+        tripToLabel.text = "Trip To"
+        self.contentView.addSubview(tripToLabel)
+        
         
         let buttonLabel = UILabel(frame: .zero)
         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -30,6 +34,8 @@ class Cell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             self.contentView.centerXAnchor.constraint(equalTo: buttonLabel.centerXAnchor),
             self.contentView.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor),
+            self.contentView.centerXAnchor.constraint(equalTo: tripToLabel.centerXAnchor, constant: 0),
+            self.contentView.topAnchor.constraint(equalTo: tripToLabel.safeAreaLayoutGuide.topAnchor, constant: -10)
             ])
         
         // Customization

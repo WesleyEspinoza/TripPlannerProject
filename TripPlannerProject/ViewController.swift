@@ -36,6 +36,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "add a trip", style: .plain, target: self, action: #selector(addButtonPressed)) as UIBarButtonItem
+        navigationItem.title = "Trip Planner"
+    }
+    
+    @objc func addButtonPressed(){
+        let nextVC = AddTripViewController()
+        self.navigationController?.pushViewController(nextVC, animated: true)
+        
     }
 
 
@@ -54,6 +62,8 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as! Cell
         
         cell.buttonLabel.textColor = .white
+        cell.backgroundColor = .green
+        cell.buttonLabel.text = "Indiana"
         return cell
     }
 }

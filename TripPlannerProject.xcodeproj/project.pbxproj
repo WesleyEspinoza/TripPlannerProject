@@ -15,6 +15,8 @@
 		2B5D26E522820ACD00A2E74D /* CustomFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D26E422820ACD00A2E74D /* CustomFlowLayout.swift */; };
 		2B5D26E722820B4300A2E74D /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D26E622820B4300A2E74D /* Cell.swift */; };
 		2B5D26E922821DC600A2E74D /* WayPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D26E822821DC600A2E74D /* WayPoint.swift */; };
+		2B5D26EB22822A0000A2E74D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B5D26EA22822A0000A2E74D /* GoogleService-Info.plist */; };
+		2B5D26ED22822ECE00A2E74D /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D26EC22822ECE00A2E74D /* AddTripView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		2B5D26E422820ACD00A2E74D /* CustomFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFlowLayout.swift; sourceTree = "<group>"; };
 		2B5D26E622820B4300A2E74D /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
 		2B5D26E822821DC600A2E74D /* WayPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayPoint.swift; sourceTree = "<group>"; };
+		2B5D26EA22822A0000A2E74D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2B5D26EC22822ECE00A2E74D /* AddTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,11 +87,13 @@
 			children = (
 				2B5D26C42281FBD500A2E74D /* AppDelegate.swift */,
 				2B5D26C62281FBD500A2E74D /* ViewController.swift */,
+				2B5D26EC22822ECE00A2E74D /* AddTripView.swift */,
 				2B5D26E822821DC600A2E74D /* WayPoint.swift */,
 				2B5D26E622820B4300A2E74D /* Cell.swift */,
 				2B5D26E422820ACD00A2E74D /* CustomFlowLayout.swift */,
 				2B5D26CB2281FBD700A2E74D /* Assets.xcassets */,
 				2B5D26CD2281FBD700A2E74D /* LaunchScreen.storyboard */,
+				2B5D26EA22822A0000A2E74D /* GoogleService-Info.plist */,
 				2B5D26D02281FBD700A2E74D /* Info.plist */,
 			);
 			path = TripPlannerProject;
@@ -185,6 +191,7 @@
 			files = (
 				2B5D26CF2281FBD700A2E74D /* LaunchScreen.storyboard in Resources */,
 				2B5D26CC2281FBD700A2E74D /* Assets.xcassets in Resources */,
+				2B5D26EB22822A0000A2E74D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +214,7 @@
 				2B5D26E722820B4300A2E74D /* Cell.swift in Sources */,
 				2B5D26E522820ACD00A2E74D /* CustomFlowLayout.swift in Sources */,
 				2B5D26C52281FBD500A2E74D /* AppDelegate.swift in Sources */,
+				2B5D26ED22822ECE00A2E74D /* AddTripView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
