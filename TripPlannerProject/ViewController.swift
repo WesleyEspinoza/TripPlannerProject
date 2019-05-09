@@ -61,8 +61,7 @@ extension ViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as! Cell
         
-        cell.buttonLabel.textColor = .white
-        cell.backgroundColor = .green
+        cell.backgroundColor = .cyan
         cell.buttonLabel.text = "Indiana"
         return cell
     }

@@ -8,28 +8,26 @@
 
 import Foundation
 import UIKit
-import MapKit
 
 class AddTripViewController: UIViewController {
-    let locationManager = CLLocationManager()
+
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Where are we going?"
+        label.text = "What city are we going to?"
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    let mapView: MKMapView = {
-       let map = MKMapView()
-        map.translatesAutoresizingMaskIntoConstraints = false
-        return map
-    }()
-    
-    let searchController: UISearchController = {
-       let searchBar = UISearchController()
-        searchBar.searchBar.translatesAutoresizingMaskIntoConstraints = false
-        
+    let textField: UITextField = {
+       let searchBar = UITextField()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.layer.cornerRadius = 10
+        searchBar.layer.borderWidth = 1
+        searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: searchBar.frame.height))
+        searchBar.leftViewMode = .always
+        searchBar.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: searchBar.frame.height))
+        searchBar.rightViewMode = .always
         return searchBar
     }()
     
@@ -38,47 +36,28 @@ class AddTripViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         view.backgroundColor  = .white
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveButtonPressed)) as UIBarButtonItem
+        navigationItem.title = "Add a Trip"
     }
-    
     
      override func viewDidLoad() {
         super.viewDidLoad()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.requestLocation()
         
         view.addSubview(titleLabel)
-        view.addSubview(mapView)
-        view.addSubview(searchController)
+        view.addSubview(textField)
         
-        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
+        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -100),
             titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             
             
-            mapView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15),
-            mapView.heightAnchor.constraint(equalToConstant: 300),
-            mapView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 15),
-            mapView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -15)])
+            textField.topAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.bottomAnchor, constant: 15),
+            textField.heightAnchor.constraint(equalToConstant: 50),
+            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25)])
         
     }
-}
-extension AddTripViewController : CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            locationManager.requestLocation()
-        }
-    }
-    
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let location = locations.first {
-            print("location: \(location)")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error: \(error)")
+    @objc func saveButtonPressed(){
+        
     }
 }

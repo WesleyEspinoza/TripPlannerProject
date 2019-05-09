@@ -8,12 +8,24 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class Cell: UICollectionViewCell {
     
     static var identifier: String = "Cell"
     
     var buttonLabel: UILabel!
+    
+    let mapView: MKMapView = {
+        let map = MKMapView()
+        map.translatesAutoresizingMaskIntoConstraints = false
+        map.isPitchEnabled = false
+        map.isRotateEnabled = false
+        map.isScrollEnabled = false
+        map.isZoomEnabled = false
+        map.layer.cornerRadius = 15
+        return map
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,23 +40,27 @@ class Cell: UICollectionViewCell {
         
         let buttonLabel = UILabel(frame: .zero)
         buttonLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         self.contentView.addSubview(buttonLabel)
+        self.contentView.addSubview(mapView)
         
         // Aplying constraints
         NSLayoutConstraint.activate([
             self.contentView.centerXAnchor.constraint(equalTo: buttonLabel.centerXAnchor),
-            self.contentView.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor),
+            self.contentView.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor, constant: 30),
             self.contentView.centerXAnchor.constraint(equalTo: tripToLabel.centerXAnchor, constant: 0),
-            self.contentView.topAnchor.constraint(equalTo: tripToLabel.safeAreaLayoutGuide.topAnchor, constant: -10)
+            self.contentView.topAnchor.constraint(equalTo: tripToLabel.safeAreaLayoutGuide.topAnchor, constant: -10),
+            self.contentView.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            self.contentView.leadingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            self.contentView.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            self.contentView.topAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.topAnchor, constant: -100)
             ])
-        
         // Customization
         self.isUserInteractionEnabled = true
         self.layer.cornerRadius = 15
         self.layer.shadowOpacity = 0.4
         self.layer.shadowRadius = 10
         self.buttonLabel = buttonLabel
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

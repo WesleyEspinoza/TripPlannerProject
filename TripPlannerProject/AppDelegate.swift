@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.isTranslucent = true
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
+        GMSServices.provideAPIKey("AIzaSyAc5qYG0vCHunlRh9KkA6o_zUemw5wiMmE")
+        GMSPlacesClient.provideAPIKey("AIzaSyAc5qYG0vCHunlRh9KkA6o_zUemw5wiMmE")
         return true
     }
 
