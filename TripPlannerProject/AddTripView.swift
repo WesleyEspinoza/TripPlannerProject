@@ -13,7 +13,16 @@ import GooglePlaces
 
 class AddTripViewController: UIViewController {
     
+    var locationPredictions = [String]()
+    
     var mapView = GMSMapView()
+    
+    let resultTableView: UITableView = {
+       let table = UITableView()
+        table.translatesAutoresizingMaskIntoConstraints = false
+        table.backgroundColor = .clear
+        return table
+    }()
     
 
     let titleLabel: UILabel = {
@@ -56,6 +65,14 @@ class AddTripViewController: UIViewController {
         marker.snippet = "Australia"
         marker.map = mapView
         
+        view.addSubview(resultTableView)
+        
+        NSLayoutConstraint.activate([
+            resultTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            resultTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            resultTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            resultTableView.heightAnchor.constraint(equalToConstant: 150)])
+        
     }
     
      override func viewDidLoad() {
@@ -67,7 +84,10 @@ class AddTripViewController: UIViewController {
         navigationItem.searchController = searchController
         definesPresentationContext = true
       
-
+        self.resultTableView.register(CustomTVC.self, forCellReuseIdentifier: CustomTVC.Identifier)
+        
+        self.resultTableView.dataSource = self
+        self.resultTableView.delegate = self
         
     }
     
@@ -89,8 +109,11 @@ class AddTripViewController: UIViewController {
             }
             if let results = results {
                 for result in results {
-                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
+                    let resultsStr = NSMutableString()
+                    resultsStr.appendFormat("%@", result.attributedPrimaryText.string)
+                    self.locationPredictions.append(resultsStr as String)
                 }
+                self.resultTableView.reloadData()
             }
         })
     }
@@ -98,6 +121,30 @@ class AddTripViewController: UIViewController {
 extension AddTripViewController: UISearchResultsUpdating {
     // MARK: - UISearchResultsUpdating Delegate
     func updateSearchResults(for searchController: UISearchController) {
+        self.locationPredictions = [String]()
         placeAutocomplete(searchController.searchBar.text ?? "")
+    }
+}
+
+extension AddTripViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locationPredictions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomTVC.Identifier, for: indexPath) as! CustomTVC
+        cell.textLabel?.text = locationPredictions[indexPath.row]
+        return cell
+    }
+}
+extension AddTripViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      
     }
 }

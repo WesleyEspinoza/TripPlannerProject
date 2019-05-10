@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.isTranslucent = true
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
-        GMSServices.provideAPIKey("")
-        GMSPlacesClient.provideAPIKey("")
+        GMSServices.provideAPIKey("AIzaSyAjxrLD-yF8g7bPGvdGm0Eu7X-pWCGYsIw")
+        GMSPlacesClient.provideAPIKey("AIzaSyAjxrLD-yF8g7bPGvdGm0Eu7X-pWCGYsIw")
         return true
     }
 
