@@ -70,7 +70,7 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextViewController = ViewController()
+        _ = ViewController()
 
     }
     
@@ -81,7 +81,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width / 4 * 1.8, height: collectionView.bounds.height / 4 )
+        return CGSize(width: collectionView.bounds.width / 4 * 1.8, height: collectionView.bounds.height / 5 )
     }
     
     

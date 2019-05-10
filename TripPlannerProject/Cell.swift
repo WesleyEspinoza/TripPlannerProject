@@ -47,13 +47,16 @@ class Cell: UICollectionViewCell {
         // Aplying constraints
         NSLayoutConstraint.activate([
             self.contentView.centerXAnchor.constraint(equalTo: buttonLabel.centerXAnchor),
-            self.contentView.centerYAnchor.constraint(equalTo: buttonLabel.centerYAnchor, constant: 30),
+            self.contentView.topAnchor.constraint(equalTo: buttonLabel.topAnchor, constant: -32),
+            
             self.contentView.centerXAnchor.constraint(equalTo: tripToLabel.centerXAnchor, constant: 0),
-            self.contentView.topAnchor.constraint(equalTo: tripToLabel.safeAreaLayoutGuide.topAnchor, constant: -10),
+            self.contentView.topAnchor.constraint(equalTo: tripToLabel.safeAreaLayoutGuide.topAnchor, constant: -8),
+            
+            
             self.contentView.bottomAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             self.contentView.leadingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             self.contentView.trailingAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            self.contentView.topAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.topAnchor, constant: -100)
+            self.contentView.topAnchor.constraint(equalTo: mapView.safeAreaLayoutGuide.topAnchor, constant: -64)
             ])
         // Customization
         self.isUserInteractionEnabled = true

@@ -18,6 +18,7 @@
 		2B5D26E922821DC600A2E74D /* WayPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D26E822821DC600A2E74D /* WayPoint.swift */; };
 		2B5D26ED22822ECE00A2E74D /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D26EC22822ECE00A2E74D /* AddTripView.swift */; };
 		2B5D271D2283A47F00A2E74D /* tripStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D271C2283A47F00A2E74D /* tripStruct.swift */; };
+		2B5D271F2284E1A300A2E74D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5D271E2284E1A300A2E74D /* MapViewController.swift */; };
 		E2C09E1AA70F5250377A1EED /* Pods_TripPlannerProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0576108FF26DB37A223F1AB5 /* Pods_TripPlannerProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		2B5D26E822821DC600A2E74D /* WayPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WayPoint.swift; sourceTree = "<group>"; };
 		2B5D26EC22822ECE00A2E74D /* AddTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
 		2B5D271C2283A47F00A2E74D /* tripStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tripStruct.swift; sourceTree = "<group>"; };
+		2B5D271E2284E1A300A2E74D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8FE99A81406D8807B002CCDB /* Pods-TripPlannerProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripPlannerProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TripPlannerProject/Pods-TripPlannerProject.release.xcconfig"; sourceTree = "<group>"; };
 		CBDF327EBA147DC31124C288 /* Pods-TripPlannerProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripPlannerProjectTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TripPlannerProjectTests/Pods-TripPlannerProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F725D205FF144DCC97E4E294 /* Pods_TripPlannerProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TripPlannerProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +103,7 @@
 				2B5D26C62281FBD500A2E74D /* ViewController.swift */,
 				2B5D271C2283A47F00A2E74D /* tripStruct.swift */,
 				2B5D26EC22822ECE00A2E74D /* AddTripView.swift */,
+				2B5D271E2284E1A300A2E74D /* MapViewController.swift */,
 				2B5D26E822821DC600A2E74D /* WayPoint.swift */,
 				2B5D26E622820B4300A2E74D /* Cell.swift */,
 				2B5D26E422820ACD00A2E74D /* CustomFlowLayout.swift */,
@@ -171,6 +174,8 @@
 				2B5D26D12281FBD800A2E74D /* Sources */,
 				2B5D26D22281FBD800A2E74D /* Frameworks */,
 				2B5D26D32281FBD800A2E74D /* Resources */,
+				FD1B56B68933409E57A174BF /* [CP] Embed Pods Frameworks */,
+				016C7D644FDC77E19645F93C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,6 +245,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		016C7D644FDC77E19645F93C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TripPlannerProjectTests/Pods-TripPlannerProjectTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		06C54EC9FA4FC44E53ED9888 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,7 +283,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3DB70999FF9DACEF16E5DB83 /* [CP] Check Pods Manifest.lock */ = {
@@ -281,7 +305,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		9E0CA5D7D7116CBA05C98B4B /* [CP] Embed Pods Frameworks */ = {
@@ -332,6 +356,25 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TripPlannerProject/Pods-TripPlannerProject-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		FD1B56B68933409E57A174BF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TripPlannerProjectTests/Pods-TripPlannerProjectTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -346,6 +389,7 @@
 				2B5D26E522820ACD00A2E74D /* CustomFlowLayout.swift in Sources */,
 				2B5D26C52281FBD500A2E74D /* AppDelegate.swift in Sources */,
 				2B5D26ED22822ECE00A2E74D /* AddTripView.swift in Sources */,
+				2B5D271F2284E1A300A2E74D /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

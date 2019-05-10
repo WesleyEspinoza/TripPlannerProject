@@ -8,8 +8,13 @@
 
 import Foundation
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 class AddTripViewController: UIViewController {
+    
+    var mapView = GMSMapView()
+    
 
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -19,17 +24,13 @@ class AddTripViewController: UIViewController {
         return label
     }()
     
-    let textField: UITextField = {
-       let searchBar = UITextField()
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.layer.cornerRadius = 10
-        searchBar.layer.borderWidth = 1
-        searchBar.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: searchBar.frame.height))
-        searchBar.leftViewMode = .always
-        searchBar.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: searchBar.frame.height))
-        searchBar.rightViewMode = .always
+    let searchController: UISearchController = {
+       let searchBar = UISearchController(searchResultsController: nil)
+        searchBar.searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
     }()
+    
+
     
     
     
@@ -40,24 +41,63 @@ class AddTripViewController: UIViewController {
         navigationItem.title = "Add a Trip"
     }
     
+    override func loadView() {
+        
+        // Create a GMSCameraPosition that tells the map to display the
+        // coordinate -33.86,151.20 at zoom level 6.
+        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        view = mapView
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = mapView
+        
+    }
+    
      override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(titleLabel)
-        view.addSubview(textField)
-        
-        NSLayoutConstraint.activate([titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: -100),
-            titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            
-            
-            textField.topAnchor.constraint(equalTo: titleLabel.safeAreaLayoutGuide.bottomAnchor, constant: 15),
-            textField.heightAnchor.constraint(equalToConstant: 50),
-            textField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
-            textField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25)])
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Where are we going?"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+      
+
         
     }
     
     @objc func saveButtonPressed(){
         
+    }
+    func placeAutocomplete(_ string: String) {
+        let visibleRegion = mapView.projection.visibleRegion()
+        let bounds = GMSCoordinateBounds(coordinate: visibleRegion.farLeft, coordinate: visibleRegion.nearRight)
+        
+        let filter = GMSAutocompleteFilter()
+        filter.type = .establishment
+        let placesClient = GMSPlacesClient()
+        placesClient.autocompleteQuery(string, bounds: bounds, filter: filter, callback: {
+            (results, error) -> Void in
+            guard error == nil else {
+                print("Autocomplete error \(String(describing: error))")
+                return
+            }
+            if let results = results {
+                for result in results {
+                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
+                }
+            }
+        })
+    }
+}
+extension AddTripViewController: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        placeAutocomplete(searchController.searchBar.text ?? "")
     }
 }
