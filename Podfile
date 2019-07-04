@@ -9,6 +9,7 @@ target 'TripPlannerProject' do
   pod 'RealmSwift'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Nominatim'
 
   target 'TripPlannerProjectTests' do
     inherit! :search_paths

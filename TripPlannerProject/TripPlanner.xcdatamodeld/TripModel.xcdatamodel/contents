@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Trip" representedClassName="Trip" syncable="YES">
+        <attribute name="names" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="wayPoints" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="WayPoint" inverseName="trip" inverseEntity="WayPoint" syncable="YES"/>
+    </entity>
+    <entity name="WayPoint" representedClassName="WayPoint" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="wayPoints" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Trip" positionX="-297.640625" positionY="49.984375" width="128" height="75"/>
+        <element name="WayPoint" positionX="-9" positionY="36" width="128" height="105"/>
+    </elements>
+</model>

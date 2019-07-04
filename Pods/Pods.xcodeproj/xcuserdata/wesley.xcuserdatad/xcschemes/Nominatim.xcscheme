@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "56864C51B2288967FB18E471B7408976"
-               BuildableName = "Pods_TripPlannerProject.framework"
-               BlueprintName = "Pods-TripPlannerProject"
+               BlueprintIdentifier = "E54C57B7EF7B487F2C3B720F8215B4A3"
+               BuildableName = "Nominatim.framework"
+               BlueprintName = "Nominatim"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "56864C51B2288967FB18E471B7408976"
-            BuildableName = "Pods_TripPlannerProject.framework"
-            BlueprintName = "Pods-TripPlannerProject"
+            BlueprintIdentifier = "E54C57B7EF7B487F2C3B720F8215B4A3"
+            BuildableName = "Nominatim.framework"
+            BlueprintName = "Nominatim"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

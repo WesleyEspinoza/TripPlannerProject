@@ -6,6 +6,7 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (3.1.0):
     - GoogleMaps/Base (= 3.1.0)
+  - Nominatim (0.9.2)
   - Realm (3.15.0):
     - Realm/Headers (= 3.15.0)
   - Realm/Headers (3.15.0)
@@ -15,14 +16,16 @@ PODS:
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - Nominatim
   - RealmSwift
 
 SPEC CHECKSUMS:
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
   GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
+  Nominatim: 2083a9f3073c4f738c1e6669e3f3381494072cb7
   Realm: 9b834e1be6062f544805252c812348872dc5d4ed
   RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
 
-PODFILE CHECKSUM: acfc3525f8dbcd71822c1ee0c629c1b836e19712
+PODFILE CHECKSUM: 12a812abb2aaf7ffd4bedb6b7b18084d59745b8f
 
 COCOAPODS: 1.1.1

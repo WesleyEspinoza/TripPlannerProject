@@ -7,8 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+    
+    var trips = [Trip]() {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    
     lazy var collectionView: UICollectionView = {
         // Instantiating the UICollectionView, using the default flow layout
         let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: CustomFlowLayout())
@@ -29,6 +37,12 @@ class ViewController: UIViewController {
         
         return collectionView
     }()
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        trips = CoreDataManager.getTrips()
+    }
     override func loadView() {
         super.loadView()
         view.addSubview(collectionView)
@@ -40,13 +54,36 @@ class ViewController: UIViewController {
         navigationItem.title = "Trip Planner"
     }
     
+    
+    
+    
     @objc func addButtonPressed(){
-        let nextVC = AddTripViewController()
-        self.navigationController?.pushViewController(nextVC, animated: true)
+        let alert = UIAlertController(title: "Where are we Going?", message: "Type in a destination", preferredStyle: .alert)
         
+        alert.addTextField { (textField) in
+            textField.placeholder = "ex. Indiana"
+        }
+        
+        let save = UIAlertAction(title: "save", style: .default) { (alertAction) in
+            let newTrip = CoreDataManager.addTrip()
+            
+            newTrip.names = alert.textFields?[0].text
+            
+            CoreDataManager.saveTrip()
+            self.trips = CoreDataManager.getTrips()
+            
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(save)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: {
+        })
     }
-
-
+    
+    
 }
 
 
@@ -54,7 +91,7 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return trips.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -62,7 +99,7 @@ extension ViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.identifier, for: indexPath) as! Cell
         
         cell.backgroundColor = .cyan
-        cell.buttonLabel.text = "Indiana"
+        cell.buttonLabel.text = trips[indexPath.row].names
         return cell
     }
 }
@@ -70,8 +107,10 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        _ = ViewController()
-
+        let addWaypoint = TripViewController()
+        addWaypoint.tripName = trips[indexPath.row].names
+        navigationController?.pushViewController(addWaypoint, animated: true)
+        
     }
     
 }
