@@ -17,12 +17,6 @@ class TripViewController: UIViewController {
     var mainTrip: Trip!
     var managedContext = CoreDataManager.managedContext
     
-    var waypoints: [WayPoint] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
     weak var tableView: UITableView!
     
     let tripTitle: UILabel =  {
